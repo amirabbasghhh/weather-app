@@ -1,3 +1,4 @@
+"use client"
 import {
   Navbar as HeroUINavbar,
   NavbarContent,
@@ -11,14 +12,20 @@ import { Input } from "@heroui/input";
 import { siteConfig } from "@/config/site";
 import { ThemeSwitch } from "@/components/theme-switch";
 import { GithubIcon, SearchIcon } from "@/components/icons";
+import { useDisclosure } from "@heroui/react";
+import ModalComponent from "./Modal";
+import CitySearch from "./CitySearch";
 
 export const Navbar = () => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
   const searchInput = (
     <Input
       aria-label="Search"
       classNames={{
         inputWrapper: "bg-default-100",
-        input: "text-sm",
+        input: "text-sm cursor-pointer",
+        
       }}
       endContent={
         <Kbd className="hidden lg:inline-block" keys={["command"]}>
@@ -30,7 +37,8 @@ export const Navbar = () => {
       startContent={
         <SearchIcon className="text-base text-default-400 pointer-events-none flex-shrink-0" />
       }
-      type="search"
+      
+      readOnly
     />
   );
 
@@ -40,7 +48,9 @@ export const Navbar = () => {
         className="hidden sm:flex basis-1/5 sm:basis-full"
         justify="end"
       >
-        <NavbarItem className="hidden lg:flex">{searchInput}</NavbarItem>
+        <NavbarItem onClick={onOpen} className="hidden cursor-pointer lg:flex">{searchInput}</NavbarItem>
+        <ModalComponent isOpen={isOpen} onOpenChange={onClose} />
+        {/* <CitySearch/> */}
         <NavbarItem className="hidden border p-2 rounded-lg border-gray-400 sm:flex gap-2">
           <ThemeSwitch />
         </NavbarItem>
