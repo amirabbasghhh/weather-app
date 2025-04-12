@@ -14,7 +14,6 @@ import { ThemeSwitch } from "@/components/theme-switch";
 import { GithubIcon, SearchIcon } from "@/components/icons";
 import { useDisclosure } from "@heroui/react";
 import ModalComponent from "./Modal";
-import CitySearch from "./CitySearch";
 
 export const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();

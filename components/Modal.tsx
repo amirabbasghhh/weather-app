@@ -9,6 +9,7 @@ import {
 } from "@heroui/react";
 import { SearchIcon } from "./icons";
 import { useEffect, useState } from "react";
+import useStore from "@/lib/store";
 
 interface ModalComponentProps {
   isOpen: boolean;
@@ -30,10 +31,10 @@ export default function ModalComponent({
   const [searchQuery, setSearchQuery] = useState("");
   const [cities, setCities] = useState<City[]>([]);
   const [loading, setLoading] = useState(false);
+  const { lat, lon, setLatLon } = useStore();
 
   const defaultCities = ["London", "Sydney", "New York", "Paris", "Madrid"];
 
-  // تابع گرفتن داده‌ی یک شهر
   const fetchCityData = async (query: string): Promise<City[]> => {
     const res = await fetch(
       `https://api.openweathermap.org/geo/1.0/direct?q=${query}&limit=1&appid=8486523fa169c0048a96e2ccb9a079ff`
@@ -41,14 +42,12 @@ export default function ModalComponent({
     return await res.json();
   };
 
-  // گرفتن لیست کامل شهرهای پیش‌فرض
   const fetchDefaultCities = async () => {
     setLoading(true);
     try {
       const results = await Promise.all(
         defaultCities.map((city) => fetchCityData(city))
       );
-      // چون هر نتیجه ممکنه آرایه باشه، همه را فلت می‌کنیم
       const flattened = results.flat();
       setCities(flattened);
     } catch (error) {
@@ -58,7 +57,6 @@ export default function ModalComponent({
     }
   };
 
-  // نمایش پیش‌فرض شهرها هنگام باز شدن
   useEffect(() => {
     if (isOpen) {
       setCities([]);
@@ -66,7 +64,6 @@ export default function ModalComponent({
     }
   }, [isOpen]);
 
-  // ریست کردن مقادیر وقتی modal بسته میشه
   useEffect(() => {
     if (!isOpen) {
       setSearchQuery("");
@@ -74,7 +71,6 @@ export default function ModalComponent({
     }
   }, [isOpen]);
 
-  // جستجو بر اساس searchQuery یا نمایش پیش‌فرض در صورت خالی بودن
   useEffect(() => {
     const delayDebounce = setTimeout(() => {
       if (searchQuery.trim() === "") {
@@ -126,20 +122,27 @@ export default function ModalComponent({
         </ModalHeader>
 
         <ModalBody>
-            <p className="text-gray-500 px-2">suggestion</p>
+          <p className="text-gray-500 px-2">suggestion</p>
           {loading && <p className="text-sm text-gray-500 px-2">Loading...</p>}
           {!loading && cities.length === 0 && searchQuery && (
-            <p className="text-sm text-gray-400 text-center">No cities found.</p>
+            <p className="text-sm text-gray-400 text-center">
+              No cities found.
+            </p>
           )}
           <ul className="">
             {cities.map((city, index) => (
-              <li key={index} className="p-2 rounded-lg hover:bg-gray-100">
+              <button
+                key={index}
+                className="p-2 w-full text-left rounded-lg hover:bg-gray-100 cursor-pointer"
+                tabIndex={0}
+                onClick={() =>{ setLatLon(city.lat, city.lon);onOpenChange(false)}}
+              >
                 <strong>{city.name}</strong>, {city.state && `${city.state}, `}
                 {city.country} <br />
                 {/* <span className="text-xs text-gray-500">
                   lat: {city.lat}, lon: {city.lon}
                 </span> */}
-              </li>
+              </button>
             ))}
           </ul>
         </ModalBody>
