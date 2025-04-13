@@ -5,6 +5,7 @@ import useStore from "@/lib/store";
 import { useEffect } from "react";
 import Temperature from "@/components/Temperature";
 import AirPollution from "@/components/AirPollution";
+import Wind from "@/components/Wind";
 const Home: React.FC = () => {
   const { lat, lon } = useStore();
  
@@ -22,6 +23,9 @@ const Home: React.FC = () => {
       </div>
       <div>
         <AirPollution key={`${lat}-${lon}`}/>
+      </div>
+      <div>
+        <Wind  key={`${lat}-${lon}`}/>
       </div>
     </div>
   );
