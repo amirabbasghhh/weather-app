@@ -42,7 +42,7 @@ export const Navbar = () => {
   );
 
   return (
-    <HeroUINavbar className="mx-auto w-[85%] pt-3" position="sticky">
+    <HeroUINavbar className="mx-auto w-[85%] pt-3" position="static">
       <NavbarContent
         className="hidden sm:flex basis-1/5 sm:basis-full"
         justify="end"
@@ -57,11 +57,12 @@ export const Navbar = () => {
           <Button
             isExternal
             as={Link}
-            className="text-sm font-normal text-default-600 bg-default-100"
+            className="text-sm font-normal text-white dark:text-black bg-default-800"
+            color="primary"
             href={siteConfig.links.sponsor}
-            variant="flat"
+            variant="solid"
           >
-            <GithubIcon className="text-default-500" />
+            <GithubIcon className="text-white dark:text-black" />
             Source Code
           </Button>
         </NavbarItem>
