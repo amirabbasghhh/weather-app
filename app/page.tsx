@@ -9,6 +9,7 @@ import Population from "@/components/Population";
 import UvIndex from "@/components/uvIndex";
 import Visibility from "@/components/Visibility";
 import Humidity from "@/components/Humidity";
+import Pressure from "@/components/Pressure";
 const Home: React.FC = () => {
   const { lat, lon } = useStore();
 
@@ -41,6 +42,9 @@ const Home: React.FC = () => {
           </div>
           <div>
             <Humidity key={`${lat}-${lon}`}/>
+          </div>
+          <div>
+            <Pressure key={`${lat}-${lon}`}/>
           </div>
         </div>
     </div>
