@@ -30,7 +30,6 @@ function UvIndex() {
 
   const uvIndexMax = Number(uv_index_max[0].toFixed(0));
 
-const marginLeftPercentage = (uvIndexMax / 14) * 100;
 
   const uvIndexCategory = (uvIndex: number) => {
     if (uvIndex <= 2) {

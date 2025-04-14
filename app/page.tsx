@@ -2,15 +2,14 @@
 import Map from "@/components/Map";
 import Sun from "../components/Sun";
 import useStore from "@/lib/store";
-import { useEffect } from "react";
 import Temperature from "@/components/Temperature";
 import AirPollution from "@/components/AirPollution";
 import Wind from "@/components/Wind";
 import Population from "@/components/Population";
 import UvIndex from "@/components/uvIndex";
+import Visibility from "@/components/Visibility";
 const Home: React.FC = () => {
   const { lat, lon } = useStore();
- 
 
   return (
     <div className="flex items-start justify-between gap-4 pb-36">
@@ -35,6 +34,9 @@ const Home: React.FC = () => {
           </div>
           <div>
             <UvIndex key={`${lat}-${lon}`}/>
+          </div>
+          <div>
+            <Visibility key={`${lat}-${lon}`}/>
           </div>
         </div>
     </div>
