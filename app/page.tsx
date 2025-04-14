@@ -7,6 +7,7 @@ import Temperature from "@/components/Temperature";
 import AirPollution from "@/components/AirPollution";
 import Wind from "@/components/Wind";
 import Population from "@/components/Population";
+import UvIndex from "@/components/uvIndex";
 const Home: React.FC = () => {
   const { lat, lon } = useStore();
  
@@ -31,6 +32,9 @@ const Home: React.FC = () => {
           </div>
           <div>
             <Population key={`${lat}-${lon}`}/>
+          </div>
+          <div>
+            <UvIndex key={`${lat}-${lon}`}/>
           </div>
         </div>
     </div>
