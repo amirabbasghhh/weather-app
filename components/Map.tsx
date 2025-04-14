@@ -3,6 +3,7 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { LatLngExpression } from "leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
+import { Skeleton } from "@heroui/react";
 
 const customIcon = new L.Icon({
   iconUrl: "https://cdn-icons-png.flaticon.com/512/684/684908.png",
@@ -18,6 +19,10 @@ interface MapProps {
 
 const Map: React.FC<MapProps> = ({ latitude, longitude }) => {
   const position: LatLngExpression = [latitude, longitude];
+
+  if (!position) {
+    return <Skeleton className=" w-full h-60 rounded-lg" />;
+  }
 
   return (
     <div style={{ height: "100vh", width: "100%" }}>

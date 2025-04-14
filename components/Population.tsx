@@ -1,10 +1,9 @@
 "use client";
-// import { useGlobalContext } from "@/app/context/globalContext";
 import { people } from "../app/utils/Icons";
 import { formatNumber } from "../app/utils/utils";
-// import { Skeleton } from "@/components/ui/skeleton";
 import useStore from "@/lib/store";
 import React, { useEffect, useState } from "react";
+import {Skeleton} from "@heroui/react";
 
 function Population() {
   // const { fiveDayForecast } = useGlobalContext();
@@ -25,9 +24,9 @@ function Population() {
 
   // const { city } = fiveDayForecast;
 
-  // if (!fiveDayForecast || !city) {
-  //   return <Skeleton className="h-[12rem] w-full" />;
-  // }
+  if (!population ) {
+    return <Skeleton className=" w-full h-40 rounded-lg" />;
+  }
 
   return (
     <div className="pt-6 pb-5 px-4 h-full border rounded-lg flex flex-col gap-8 dark:bg-dark-grey shadow-sm dark:shadow-none">

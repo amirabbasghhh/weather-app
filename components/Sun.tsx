@@ -3,6 +3,7 @@ import { unixToTime } from '@/app/utils/utils';
 import useStore from '@/lib/store';
 import { useEffect, useState } from 'react';
 import { sunset } from '@/app/utils/Icons';
+import { Skeleton } from '@heroui/react';
 
 export default function Home() {
   const [sun, setSun] = useState<any>(null); // افزودن تایپ برای sun
@@ -21,7 +22,9 @@ export default function Home() {
   // دسترسی به زمان‌ها
   const sunsetTime = sun?.sys?.sunset ? unixToTime(sun.sys.sunset, sun.timezone) : null;
   const sunriseTime = sun?.sys?.sunrise ? unixToTime(sun.sys.sunrise, sun.timezone) : null;
-
+    if (!sun ) {
+      return <Skeleton className=" w-full h-40 rounded-lg" />;
+    }
   return (
     <div className="pt-6 pb-5 px-4 border rounded-lg flex flex-col gap-y-5 h-full dark:bg-dark-grey shadow-sm dark:shadow-none">
       <div className="top">

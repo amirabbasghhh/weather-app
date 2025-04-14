@@ -15,9 +15,7 @@ const Home: React.FC = () => {
     <div className="flex items-start justify-between gap-4 pb-36">
           <div className="w-1/4 h-full ">
             <Map key={`${lat}-${lon}`} latitude={lat} longitude={lon} />
-            
           </div>
-
         <div className="grid grid-cols-3 gap-2 w-3/4">
           <div className="">
             <Sun key={`${lat}-${lon}`} />

@@ -4,11 +4,11 @@ import { airQulaityIndexText } from "../app/utils/utils";
 import useStore from "@/lib/store";
 import React, { useEffect, useState } from "react";
 import Progress from "./Progress";
+import { Skeleton } from "@heroui/react";
 
 function AirPollution() {
-  //   const { airQuality } = useGlobalContext();
   const { lat, lon } = useStore();
-  const [polltion, setPollution] = useState<any>(null);
+  const [pollution, setPollution] = useState<any>(null);
 
   useEffect(() => {
     const fetchSunTimes = async () => {
@@ -23,12 +23,15 @@ function AirPollution() {
     fetchSunTimes();
   }, []);
 
-  const airQualityIndex = polltion?.list[0].main.aqi * 10;
+  const airQualityIndex = pollution?.list[0].main.aqi * 10;
 
   const filteredIndex = airQulaityIndexText.find((item) => {
     return item.rating === airQualityIndex;
   });
-
+  if (!pollution) {
+    return <Skeleton className=" w-full h-40 rounded-lg" />;
+  }
+  
   return (
     <div
       className="air-pollution pt-6 px-4 h-[12rem] border rounded-lg flex flex-col gap-8

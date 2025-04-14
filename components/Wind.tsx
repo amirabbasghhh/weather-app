@@ -1,9 +1,9 @@
 "use client";
 import { wind } from "../app/utils/Icons";
-import { Skeleton } from "../app/utils/skeleton";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import useStore from "@/lib/store";
+import { Skeleton } from "@heroui/react";
 
 function Wind() {
   const { lat, lon } = useStore();
@@ -24,8 +24,8 @@ function Wind() {
   const windSpeed = windd?.wind?.speed;
   const windDir = windd?.wind?.deg;
 
-  if (!windSpeed || !windDir) {
-    return <Skeleton className="h-[12rem] w-full" />;
+  if (!windd) {
+    return <Skeleton className=" w-full h-40 rounded-lg" />;
   }
 
   return (

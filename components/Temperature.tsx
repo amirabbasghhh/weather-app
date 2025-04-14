@@ -11,6 +11,7 @@ import { kelvinToCelsius } from "../app/utils/utils";
 import moment from "moment";
 import { useEffect, useState } from "react";
 import useStore from "@/lib/store";
+import { Skeleton } from "@heroui/react";
 // types.ts
 export interface WeatherData {
     coord: {
@@ -117,8 +118,9 @@ function Temperature() {
     return () => clearInterval(interval);
   }, [temperature?.timezone]);
 
+ 
   if (!temperature) {
-    return <div>Loading...</div>;
+    return <Skeleton className=" w-full h-40 rounded-lg" />;
   }
   
 
