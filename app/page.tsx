@@ -8,6 +8,7 @@ import Wind from "@/components/Wind";
 import Population from "@/components/Population";
 import UvIndex from "@/components/uvIndex";
 import Visibility from "@/components/Visibility";
+import Humidity from "@/components/Humidity";
 const Home: React.FC = () => {
   const { lat, lon } = useStore();
 
@@ -37,6 +38,9 @@ const Home: React.FC = () => {
           </div>
           <div>
             <Visibility key={`${lat}-${lon}`}/>
+          </div>
+          <div>
+            <Humidity key={`${lat}-${lon}`}/>
           </div>
         </div>
     </div>
