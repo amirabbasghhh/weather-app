@@ -10,6 +10,7 @@ import UvIndex from "@/components/uvIndex";
 import Visibility from "@/components/Visibility";
 import Humidity from "@/components/Humidity";
 import Pressure from "@/components/Pressure";
+import FeelsLike from "@/components/FeelsLike";
 const Home: React.FC = () => {
   const { lat, lon } = useStore();
 
@@ -45,6 +46,9 @@ const Home: React.FC = () => {
           </div>
           <div>
             <Pressure key={`${lat}-${lon}`}/>
+          </div>
+          <div>
+            <FeelsLike key={`${lat}-${lon}`}/>
           </div>
         </div>
     </div>
