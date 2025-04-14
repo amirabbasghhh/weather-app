@@ -1,3 +1,5 @@
+import { clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
 import moment from "moment";
 
 export const kelvinToCelsius = (kelvin: number) => {
@@ -53,10 +55,16 @@ export const kelvinToCelsius = (kelvin: number) => {
     },
   ];
 
-  // utils.ts
+  export const formatNumber = (num: number) => {
+    if (num >= 1000000) {
+      return (num / 1000000).toFixed(1) + "M";
+    } else if (num >= 1000) {
+      return (num / 1000).toFixed(1) + "K";
+    } else {
+      return num;
+    }
+  };
 
-import { clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
 
 export function cn(...inputs: any[]) {
   return twMerge(clsx(inputs));

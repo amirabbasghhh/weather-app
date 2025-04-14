@@ -23,7 +23,7 @@ export default function Home() {
   const sunriseTime = sun?.sys?.sunrise ? unixToTime(sun.sys.sunrise, sun.timezone) : null;
 
   return (
-    <div className="pt-6 pb-5 px-4 h-full  border rounded-lg flex flex-col gap-8 dark:bg-dark-grey shadow-sm dark:shadow-none">
+    <div className="pt-6 pb-5 px-4 border rounded-lg flex flex-col gap-y-5 h-full dark:bg-dark-grey shadow-sm dark:shadow-none">
       <div className="top">
         <h2 className="flex items-center gap-2 font-medium">
             {sunset}
