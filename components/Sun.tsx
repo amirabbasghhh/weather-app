@@ -6,14 +6,30 @@ import { sunset } from '@/app/utils/Icons';
 import { Skeleton } from '@heroui/react';
 
 export default function Home() {
-  const [sun, setSun] = useState<any>(null); // افزودن تایپ برای sun
-  const { lat, lon } = useStore();
+  const [sun, setSun] = useState<any>(null); 
+  const { lat, lon,setError } = useStore();
+  const apiKey=process.env.NEXT_PUBLIC_API_KEY
+
   
   useEffect(() => {
     const fetchSunTimes = async () => {
-      const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=8486523fa169c0048a96e2ccb9a079ff`);
-      const data = await res.json();
-      setSun(data);
+      try{
+        const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`);
+        if (!res.ok) {
+          setError("something went wrong");
+          
+        }
+        const data = await res.json();
+        setSun(data);
+
+      }
+      catch(error){
+        if (error instanceof Error) {
+          setError(error.message);
+        } else {
+          setError("unKnown error");
+        }
+      }
     };
 
     fetchSunTimes();

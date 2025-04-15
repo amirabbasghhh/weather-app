@@ -7,20 +7,30 @@ import { thermometer } from "@/app/utils/Icons";
 import { Skeleton } from "@/app/utils/skeleton";
 import useStore from "@/lib/store";
 
-
 function FeelsLike() {
-  const { lat, lon } = useStore();
+  const { lat, lon, error, setError } = useStore();
   const [like, setLike] = useState<any>(null);
+  const apiKey = process.env.NEXT_PUBLIC_API_KEY;
 
   useEffect(() => {
     const fetchSunTimes = async () => {
-      const res = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=8486523fa169c0048a96e2ccb9a079ff`
-      );
+      try {
+        const res = await fetch(
+          `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`
+        );
+        if (!res.ok) {
+          setError("something went wrong");
+        }
+        const data = await res.json();
+        setLike(data);
+      } catch (error) {
+        if (error instanceof Error) {
+          setError(error.message);
+        } else {
+          setError("unKnown error");
+        }
+      }
 
-      const data = await res.json();
-
-      setLike(data);
     };
 
     fetchSunTimes();
@@ -29,10 +39,10 @@ function FeelsLike() {
   if (!like) {
     return <Skeleton className="w-full h-40 rounded-lg" />;
   }
-  
-  const  feels_like = like?.main.feels_like;
-  const temp_min=like?.main.temp_main
-  const temp_max =like?.main.temp_max
+
+  const feels_like = like?.main?.feels_like;
+  const temp_min = like?.main?.temp_main;
+  const temp_max = like?.main?.temp_max;
 
   const feelsLikeText = (
     feelsLike: number,

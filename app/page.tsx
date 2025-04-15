@@ -13,7 +13,13 @@ import Pressure from "@/components/Pressure";
 import FeelsLike from "@/components/FeelsLike";
 import FiveDayForecast from "@/components/FiveDayForcast";
 const Home: React.FC = () => {
-  const { lat, lon } = useStore();
+  const { lat, lon,error } = useStore();
+
+  if(error){
+    return(
+      <p className="flex items-center justify-center mt-10 font-bold text-red-500"> Check your internet connection and try again</p>
+    )
+  }
 
   return (
     <div className="flex flex-col md:flex-row items-start justify-between gap-4 pb-36">

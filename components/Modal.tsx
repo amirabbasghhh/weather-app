@@ -6,6 +6,8 @@ import {
   ModalBody,
   ModalFooter,
   Button,
+  Skeleton,
+  Spinner,
 } from "@heroui/react";
 import { SearchIcon } from "./icons";
 import { useEffect, useState } from "react";
@@ -31,7 +33,7 @@ export default function ModalComponent({
   const [searchQuery, setSearchQuery] = useState("");
   const [cities, setCities] = useState<City[]>([]);
   const [loading, setLoading] = useState(false);
-  const { lat, lon, setLatLon } = useStore();
+  const { setLatLon } = useStore();
 
   const defaultCities = ["London", "Sydney", "New York", "Paris", "Madrid"];
 
@@ -123,7 +125,8 @@ export default function ModalComponent({
 
         <ModalBody>
           <p className="text-gray-500 px-2">suggestion</p>
-          {loading && <p className="text-sm text-gray-500 px-2">Loading...</p>}
+          {loading && <div className="flex items-center justify-center"><Spinner  variant="spinner"/></div>}
+
           {!loading && cities.length === 0 && searchQuery && (
             <p className="text-sm text-gray-400 text-center">
               No cities found.
@@ -135,11 +138,13 @@ export default function ModalComponent({
                 key={index}
                 className="p-2 w-full text-left  rounded-lg hover:bg-gray-100 dark:hover:bg-gray-900 cursor-pointer"
                 tabIndex={0}
-                onClick={() =>{ setLatLon(city.lat, city.lon);onOpenChange(false)}}
+                onClick={() => {
+                  setLatLon(city.lat, city.lon);
+                  onOpenChange(false);
+                }}
               >
                 <strong>{city.name}</strong>, {city.state && `${city.state}, `}
                 {city.country} <br />
-             
               </button>
             ))}
           </ul>

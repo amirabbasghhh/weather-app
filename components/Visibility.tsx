@@ -5,27 +5,39 @@ import useStore from "@/lib/store";
 import React, { useEffect, useState } from "react";
 
 function Visibility() {
-  const { lat, lon } = useStore();
+  const { lat, lon, setError } = useStore();
   const [visible, setVisible] = useState<any>(null);
+  const apiKey = process.env.NEXT_PUBLIC_API_KEY;
 
   useEffect(() => {
     const fetchSunTimes = async () => {
-      const res = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=8486523fa169c0048a96e2ccb9a079ff`
-      );
+      try {
+        const res = await fetch(
+          `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`
+        );
+        if (!res.ok) {
+          setError("something went wrong");
+        }
 
-      const data = await res.json();
-      setVisible(data);
+        const data = await res.json();
+        setVisible(data);
+      } catch (error) {
+        if (error instanceof Error) {
+          setError(error.message);
+        } else {
+          setError("unKnown error");
+        }
+      }
     };
 
     fetchSunTimes();
   }, []);
 
   if (!visible) {
-    return <Skeleton className="w-full h-40 rounded-lg" />;
+    return <Skeleton className="w-full  h-40 rounded-lg" />;
   }
 
-  const  visibility  = visible?.visibility;
+  const visibility = visible?.visibility;
 
   const getVisibilityDescription = (visibility: number) => {
     const visibilityInKm = Math.round(visibility / 1000);

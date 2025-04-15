@@ -47,7 +47,7 @@
       }
     ],
     "import/order": [
-      "warn",
+      "false",
       {
         "groups": [
           "type",
