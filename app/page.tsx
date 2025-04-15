@@ -1,5 +1,8 @@
 "use client";
-import Map from "@/components/Map";
+// import Map from "@/components/Map";
+const Map = dynamic(() => import("@/components/Map"), {
+  ssr: false, // اگر فقط سمت کلاینت لازم داری
+});
 import Sun from "../components/Sun";
 import useStore from "@/lib/store";
 import Temperature from "@/components/Temperature";
@@ -12,6 +15,7 @@ import Humidity from "@/components/Humidity";
 import Pressure from "@/components/Pressure";
 import FeelsLike from "@/components/FeelsLike";
 import FiveDayForecast from "@/components/FiveDayForcast";
+import dynamic from "next/dynamic";
 const Home: React.FC = () => {
   const { lat, lon,error } = useStore();
 
