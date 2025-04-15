@@ -110,11 +110,11 @@ export default function ModalComponent({
     >
       <ModalContent>
         <ModalHeader className="flex  flex-col gap-1 border-b ">
-          <div className="flex items-center bg-white  w-full ">
+          <div className="flex items-center bg-white dark:bg-black dark:p-4  dark:mt-4 rounded-lg  w-full ">
             <SearchIcon />
             <input
               placeholder="Search for a city..."
-              className="bg-white text-gray-500 w-full ml-5 border-none focus:ring-0 focus:border-none focus:outline-none"
+              className="bg-white dark:bg-black dark:text-white text-gray-500 w-full ml-5 border-none focus:ring-0 focus:border-none focus:outline-none"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
@@ -133,32 +133,17 @@ export default function ModalComponent({
             {cities.map((city, index) => (
               <button
                 key={index}
-                className="p-2 w-full text-left rounded-lg hover:bg-gray-100 cursor-pointer"
+                className="p-2 w-full text-left  rounded-lg hover:bg-gray-100 dark:hover:bg-gray-900 cursor-pointer"
                 tabIndex={0}
                 onClick={() =>{ setLatLon(city.lat, city.lon);onOpenChange(false)}}
               >
                 <strong>{city.name}</strong>, {city.state && `${city.state}, `}
                 {city.country} <br />
-                {/* <span className="text-xs text-gray-500">
-                  lat: {city.lat}, lon: {city.lon}
-                </span> */}
+             
               </button>
             ))}
           </ul>
         </ModalBody>
-
-        {/* <ModalFooter>
-          <Button
-            color="danger"
-            variant="light"
-            onPress={() => onOpenChange(false)}
-          >
-            Close
-          </Button>
-          <Button color="primary" onPress={() => onOpenChange(false)}>
-            Done
-          </Button>
-        </ModalFooter> */}
       </ModalContent>
     </Modal>
   );

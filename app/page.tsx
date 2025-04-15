@@ -16,14 +16,14 @@ const Home: React.FC = () => {
   const { lat, lon } = useStore();
 
   return (
-    <div className="flex items-start justify-between gap-4 pb-36">
-          <div className="w-1/4 h-full flex flex-col gap-y-2 ">
+    <div className="flex flex-col md:flex-row items-start justify-between gap-4 pb-36">
+          <div className="w-full md:w-1/4 h-full flex flex-col gap-y-2 ">
             <Map key={`${lat}-${lon}`} latitude={lat} longitude={lon} />
             <div>
               <FiveDayForecast key={`${lat}-${lon}`}/>
             </div>
           </div>
-        <div className="grid grid-cols-4 gap-2 w-3/4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 w-full md:w-3/4">
           <div>
             <Visibility key={`${lat}-${lon}`}/>
           </div>

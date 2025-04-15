@@ -137,7 +137,7 @@ function Temperature() {
         <span>{temperature?.name}</span>
         <span>{navigation}</span>
       </p>
-      <p className="py-10 text-9xl font-bold self-center">{temp}°</p>
+      <p className="py-10 text-xl lg:text-5xl xl:text-9xl font-bold self-center">{temp}°</p>
 
       <div>
         <div>
