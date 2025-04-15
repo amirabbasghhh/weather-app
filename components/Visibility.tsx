@@ -1,7 +1,7 @@
 "use client";
 import { eye } from "../app/utils/Icons";
-import { Skeleton } from "@/app/utils/skeleton";
 import useStore from "@/lib/store";
+import { Skeleton } from "@heroui/react";
 import React, { useEffect, useState } from "react";
 
 function Visibility() {
@@ -31,7 +31,7 @@ function Visibility() {
     };
 
     fetchSunTimes();
-  }, []);
+  }, [lat,lon]);
 
   if (!visible) {
     return <Skeleton className="w-full  h-40 rounded-lg" />;

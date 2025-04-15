@@ -89,7 +89,7 @@ function Temperature() {
     };
 
     fetchSunTimes();
-  }, []);
+  }, [lat,lon]);
   const temp = temperature?.main?.temp ? kelvinToCelsius(temperature.main.temp) : null;
   const minTemp = temperature?.main?.temp_min ? kelvinToCelsius(temperature.main.temp_min) : null;
   const maxTemp = temperature?.main?.temp_max ? kelvinToCelsius(temperature.main.temp_max) : null;

@@ -1,8 +1,8 @@
 "use client";
 // import { useGlobalContext } from "@/app/context/globalContext";
 import { gauge } from "../app/utils/Icons";
-import { Skeleton } from "@/app/utils/skeleton";
 import useStore from "@/lib/store";
+import { Skeleton } from "@heroui/react";
 import React, { useEffect, useState } from "react";
 
 function Pressure() {
@@ -35,7 +35,7 @@ function Pressure() {
     };
 
     fetchSunTimes();
-  }, []);
+  }, [lat,lon]);
 
   if (!press) {
     return <Skeleton className="w-full h-40 rounded-lg" />;

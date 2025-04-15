@@ -32,7 +32,7 @@ function Wind() {
     };
 
     fetchSunTimes();
-  }, []);
+  }, [lat,lon]);
 
   const windSpeed = windd?.wind?.speed;
   const windDir = windd?.wind?.deg;

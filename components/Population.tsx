@@ -6,7 +6,6 @@ import React, { useEffect, useState } from "react";
 import {Skeleton} from "@heroui/react";
 
 function Population() {
-  // const { fiveDayForecast } = useGlobalContext();
   const { lat, lon,setError } = useStore();
   const [population, setPopulation] = useState<any>(null);
   const apiKey=process.env.NEXT_PUBLIC_API_KEY
@@ -36,7 +35,7 @@ function Population() {
     };
 
     fetchSunTimes();
-  }, []);
+  }, [lat,lon]);
 
   // const { city } = fiveDayForecast;
 

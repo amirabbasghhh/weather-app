@@ -33,7 +33,7 @@ function AirPollution() {
     };
 
     fetchSunTimes();
-  }, []);
+  }, [lat,lon]);
 
   if (!pollution) {
     return <Skeleton className="w-full h-40 rounded-lg" />;

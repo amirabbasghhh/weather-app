@@ -31,7 +31,7 @@ function UvIndex() {
     };
 
     fetchSunTimes();
-  }, []);
+  }, [lat,lon]);
 
   if (!uv) {
     return <Skeleton className="h-40 w-full rounded-lg" />;

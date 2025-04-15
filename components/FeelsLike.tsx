@@ -4,8 +4,8 @@ import React, { useEffect, useState } from "react";
 import { kelvinToCelsius } from "../app/utils/utils";
 
 import { thermometer } from "@/app/utils/Icons";
-import { Skeleton } from "@/app/utils/skeleton";
 import useStore from "@/lib/store";
+import { Skeleton } from "@heroui/react";
 
 function FeelsLike() {
   const { lat, lon, error, setError } = useStore();
@@ -34,7 +34,7 @@ function FeelsLike() {
     };
 
     fetchSunTimes();
-  }, []);
+  }, [lat,lon]);
 
   if (!like) {
     return <Skeleton className="w-full h-40 rounded-lg" />;

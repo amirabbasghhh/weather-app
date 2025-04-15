@@ -4,10 +4,9 @@ import React, { useEffect, useState } from "react";
 import { kelvinToCelsius, unixToDay } from "../app/utils/utils";
 
 import { calender } from "@/app/utils/Icons";
-import { Skeleton } from "@/app/utils/skeleton";
 import useStore from "@/lib/store";
-import { Progress } from "@heroui/react";
 import CustomProgress from "./CustomProgress";
+import { Skeleton } from "@heroui/react";
 
 function FiveDayForecast() {
   const { lat, lon,setError } = useStore();
@@ -42,7 +41,7 @@ function FiveDayForecast() {
     };
 
     fetchSunTimes();
-  }, []);
+  }, [lat,lon]);
 
   const city = five?.city;
   const list = five?.list;

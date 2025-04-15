@@ -1,7 +1,7 @@
 "use client";
 import { droplets } from "../app/utils/Icons";
-import { Skeleton } from "@/app/utils/skeleton";
 import useStore from "@/lib/store";
+import { Skeleton } from "@heroui/react";
 import React, { useEffect, useState } from "react";
 
 function Humidity() {
@@ -36,7 +36,7 @@ function Humidity() {
     };
 
     fetchSunTimes();
-  }, []);
+  }, [lat,lon]);
 
   if (!hum) {
     return <Skeleton className="h-40 rounded-lg w-full" />;

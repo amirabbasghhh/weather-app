@@ -26,39 +26,39 @@ const Home: React.FC = () => {
           <div className="w-full md:w-1/4 h-full flex flex-col gap-y-2 ">
             <Map key={`${lat}-${lon}`} latitude={lat} longitude={lon} />
             <div>
-              <FiveDayForecast key={`${lat}-${lon}`}/>
+              <FiveDayForecast />
             </div>
           </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 w-full md:w-3/4">
           <div>
-            <Visibility key={`${lat}-${lon}`}/>
+            <Visibility />
           </div>
           <div>
-            <Humidity key={`${lat}-${lon}`}/>
+            <Humidity />
           </div>
           <div>
-            <Pressure key={`${lat}-${lon}`}/>
+            <Pressure />
           </div>
           <div>
-            <UvIndex key={`${lat}-${lon}`}/>
+            <UvIndex />
           </div>
           <div className="">
-            <Sun key={`${lat}-${lon}`} />
+            <Sun  />
           </div>
           <div>
-            <Wind  key={`${lat}-${lon}`}/>
+            <Wind  />
           </div>
           <div>
-            <AirPollution key={`${lat}-${lon}`}/>
+            <AirPollution />
           </div>
           <div>
-            <FeelsLike key={`${lat}-${lon}`}/>
+            <FeelsLike />
           </div>
           <div className="">
-            <Temperature key={`${lat}-${lon}`}/>
+            <Temperature />
           </div>
           <div>
-            <Population key={`${lat}-${lon}`}/>
+            <Population />
           </div>
         </div>
     </div>
