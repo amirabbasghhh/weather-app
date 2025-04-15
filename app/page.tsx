@@ -11,33 +11,19 @@ import Visibility from "@/components/Visibility";
 import Humidity from "@/components/Humidity";
 import Pressure from "@/components/Pressure";
 import FeelsLike from "@/components/FeelsLike";
+import FiveDayForecast from "@/components/FiveDayForcast";
 const Home: React.FC = () => {
   const { lat, lon } = useStore();
 
   return (
     <div className="flex items-start justify-between gap-4 pb-36">
-          <div className="w-1/4 h-full ">
+          <div className="w-1/4 h-full flex flex-col gap-y-2 ">
             <Map key={`${lat}-${lon}`} latitude={lat} longitude={lon} />
+            <div>
+              <FiveDayForecast key={`${lat}-${lon}`}/>
+            </div>
           </div>
-        <div className="grid grid-cols-3 gap-2 w-3/4">
-          <div className="">
-            <Sun key={`${lat}-${lon}`} />
-          </div>
-          <div>
-            <Wind  key={`${lat}-${lon}`}/>
-          </div>
-          <div>
-            <AirPollution key={`${lat}-${lon}`}/>
-          </div>
-          <div className="">
-            <Temperature key={`${lat}-${lon}`}/>
-          </div>
-          <div>
-            <Population key={`${lat}-${lon}`}/>
-          </div>
-          <div>
-            <UvIndex key={`${lat}-${lon}`}/>
-          </div>
+        <div className="grid grid-cols-4 gap-2 w-3/4">
           <div>
             <Visibility key={`${lat}-${lon}`}/>
           </div>
@@ -48,7 +34,25 @@ const Home: React.FC = () => {
             <Pressure key={`${lat}-${lon}`}/>
           </div>
           <div>
+            <UvIndex key={`${lat}-${lon}`}/>
+          </div>
+          <div className="">
+            <Sun key={`${lat}-${lon}`} />
+          </div>
+          <div>
+            <Wind  key={`${lat}-${lon}`}/>
+          </div>
+          <div>
+            <AirPollution key={`${lat}-${lon}`}/>
+          </div>
+          <div>
             <FeelsLike key={`${lat}-${lon}`}/>
+          </div>
+          <div className="">
+            <Temperature key={`${lat}-${lon}`}/>
+          </div>
+          <div>
+            <Population key={`${lat}-${lon}`}/>
           </div>
         </div>
     </div>

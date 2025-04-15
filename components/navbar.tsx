@@ -49,7 +49,6 @@ export const Navbar = () => {
       >
         <NavbarItem onClick={onOpen} className="hidden cursor-pointer lg:flex">{searchInput}</NavbarItem>
         <ModalComponent isOpen={isOpen} onOpenChange={onClose} />
-        {/* <CitySearch/> */}
         <NavbarItem className="hidden border p-2 rounded-lg border-gray-400 sm:flex gap-2">
           <ThemeSwitch />
         </NavbarItem>
@@ -59,7 +58,7 @@ export const Navbar = () => {
             as={Link}
             className="text-sm font-normal text-white dark:text-black bg-default-800"
             color="primary"
-            href={siteConfig.links.sponsor}
+            href="https://github.com/amirabbasghhh/weather-app"
             variant="solid"
           >
             <GithubIcon className="text-white dark:text-black" />

@@ -29,7 +29,7 @@ function Population() {
   }
 
   return (
-    <div className="pt-6 pb-5 px-4 h-full border rounded-lg flex flex-col gap-8 dark:bg-dark-grey shadow-sm dark:shadow-none">
+    <div className="pt-6 pb-5 px-4 h-full border rounded-lg flex flex-col justify-between dark:bg-dark-grey shadow-sm dark:shadow-none">
       <div className="top">
         <h2 className="flex items-center gap-2 font-medium">
           {people} Population

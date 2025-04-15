@@ -25,11 +25,11 @@ const Map: React.FC<MapProps> = ({ latitude, longitude }) => {
   }
 
   return (
-    <div style={{ height: "100vh", width: "100%" }}>
+    <div style={{ height: "50vh", width: "100%",borderRadius:"20px" }}>
       <MapContainer
         center={position}
         zoom={14}
-        style={{ height: "100%", width: "100%" ,zIndex:1}}
+        style={{ height: "100%", width: "100%" ,zIndex:1,borderRadius:"20px"}}
       >
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
