@@ -28,7 +28,7 @@ const Home: React.FC = () => {
   return (
     <div className="flex flex-col md:flex-row items-start justify-between gap-4 pb-36">
           <div className="w-full md:w-1/4 h-full flex flex-col gap-y-2 ">
-            <Map key={`${lat}-${lon}`} latitude={lat} longitude={lon} />
+            <Map latitude={lat} longitude={lon} />
             <div>
               <FiveDayForecast />
             </div>
