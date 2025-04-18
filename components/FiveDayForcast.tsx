@@ -19,7 +19,7 @@ function FiveDayForecast() {
       try{
 
         const res = await fetch(
-          `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}`
+          `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}`
         );
 
         if (!res.ok) {
